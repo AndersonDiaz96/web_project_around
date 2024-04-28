@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Primera web usando HTML, CSS y JavaScript."
+    />
+    <meta name="author" content="Anderson Diaz" />
+    <meta name="keywords" content="TripleTen, Java Script, Bootcamp" />
+    <title>Around The U.S.</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img
+          src="./images/logo.svg"
+          alt="logo de Around The U.S."
+          class="header__logo"
+        />
+      </header>
+      <main class="main">
+        <section class="profile">
+          <img
+            src="./images/Avatar.svg"
+            alt="profile Avatar"
+            class="profile__avatar"
+          />
+          <div class="profile__info">
+            <h1 class="profile__name">Jacques Cousteau</h1>
+            <h2 class="profile__job">Explorador</h2>
+          </div>
+          <div class="profile__edit-button">
+            <img src="./images/Edit_Button.svg" alt="edit button" />
+          </div>
+          <div class="profile__add-button">
+            <img src="./images/Add_Button.svg" alt="add button" />
+          </div>
+        </section>
+        <section class="elements">
+          <div class="elements__card">
+            <div class="elements__container">
+              <img
+                src="./images/kirill-pershin-1088404-unsplash.jpg"
+                alt="Image Valle de Yosemite"
+                class="elements__image"
+              />
+
+              <img
+                src="./images/Trash.svg"
+                alt="button Trash"
+                class="elements__trash"
+              />
+            </div>
+            <div class="elements__rectangle">
+              <p class="elements__title">Valle de Yosemite</p>
+              <img
+                src="./images/Group.svg"
+                alt="button heart"
+                class="elements__heart"
+              />
+            </div>
+          </div>
+          <div class="elements__card">
+            <div class="elements__container">
+              <img
+                src="./images/kirill-pershin-1404681-unsplash.jpg"
+                alt="Image Lago Louise"
+                class="elements__image"
+              />
+
+              <img
+                src="./images/Trash.svg"
+                alt="button Trash"
+                class="elements__trash"
+              />
+            </div>
+            <div class="elements__rectangle">
+              <p class="elements__title">Lago Louise</p>
+              <img
+                src="./images/Group.svg"
+                alt="button heart"
+                class="elements__heart"
+              />
+            </div>
+          </div>
+          <div class="elements__card">
+            <div class="elements__container">
+              <img
+                src="./images/kirill-pershin-1556355-unsplash.jpg"
+                alt="Image Montañas Calvas"
+                class="elements__image"
+              />
+
+              <img
+                src="./images/Trash.svg"
+                alt="button Trash"
+                class="elements__trash"
+              />
+            </div>
+            <div class="elements__rectangle">
+              <p class="elements__title">Montañas Calvas</p>
+              <img
+                src="./images/Group.svg"
+                alt="button heart"
+                class="elements__heart"
+              />
+            </div>
+          </div>
+          <div class="elements__card">
+            <div class="elements__container">
+              <img
+                src="./images/imagen_fondo_4.jpeg"
+                alt="Image Latemar"
+                class="elements__image"
+              />
+
+              <img
+                src="./images/Trash.svg"
+                alt="button Trash"
+                class="elements__trash"
+              />
+            </div>
+            <div class="elements__rectangle">
+              <p class="elements__title">Latemar</p>
+              <img
+                src="./images/Group.svg"
+                alt="button heart"
+                class="elements__heart"
+              />
+            </div>
+          </div>
+          <div class="elements__card">
+            <div class="elements__container">
+              <img
+                src="./images/imagen_fondo_5.jpeg"
+                alt="Image Vanois National..."
+                class="elements__image"
+              />
+
+              <img
+                src="./images/Trash.svg"
+                alt="button Trash"
+                class="elements__trash"
+              />
+            </div>
+            <div class="elements__rectangle">
+              <p class="elements__title">Vanois National...</p>
+              <img
+                src="./images/Group.svg"
+                alt="button heart"
+                class="elements__heart"
+              />
+            </div>
+          </div>
+          <div class="elements__card">
+            <div class="elements__container">
+              <img
+                src="./images/imagen_fondo_6.jpeg"
+                alt="Image Lago di Braies"
+                class="elements__image"
+              />
+
+              <img
+                src="./images/Trash.svg"
+                alt="button Trash"
+                class="elements__trash"
+              />
+            </div>
+            <div class="elements__rectangle">
+              <p class="elements__title">Lago di Braies</p>
+              <img
+                src="./images/Group.svg"
+                alt="button heart"
+                class="elements__heart"
+              />
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">© 2024 Anderson Diaz</p>
+      </footer>
+
+      <div class="popup" id="popupaddprofile">
+        <form class="popup__container" id="profilesave" novalidate>
+          <img
+            src="./images/Close_Icon.svg"
+            alt="close icon"
+            class="popup__close"
+          />
+          <h2 class="popup__title">Editar perfil</h2>
+          <input
+            type="text"
+            name="name"
+            class="popup__imput"
+            minlength="1"
+            maxlength="30"
+            placeholder="Nombre"
+            id="input-name"
+          />
+
+          <input
+            type="text"
+            name="aboutMe"
+            class="popup__imput"
+            minlength="4"
+            maxlength="150"
+            placeholder="Acerca de mi"
+            id="input-about"
+          />
+          <button class="popup__button">Crear</button>
+        </form>
+      </div>
+    </div>
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>

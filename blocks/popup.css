@@ -1,0 +1,98 @@
+.popup {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 50%);
+  display: none;
+  top: 0px;
+}
+
+.popup__open {
+  display: flex;
+}
+
+.popup__container {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  top: 195px;
+  position: absolute;
+  margin: 0 auto;
+  width: 430px;
+  height: 330px;
+}
+
+.popup__title {
+  width: 330px;
+  height: 23px;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  height: 23px;
+  color: #000;
+  margin-left: 36px;
+  margin-top: 34px;
+  margin-bottom: 54px;
+}
+
+.popup__imput {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  height: 14px;
+  border: none;
+  border-bottom: 1px solid #c4c4c4;
+  padding: 0 0 13px;
+  margin: 0 36px 29.74px;
+  outline: 0;
+  max-width: 358px;
+}
+
+.popup__input::placeholder {
+  color: #c4c4c4;
+}
+
+.popup__button {
+  max-width: 358px;
+  height: 50px;
+  background-color: #000;
+  color: #fff;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.78px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  margin: 18.26px 36px 35.51px;
+  padding: 0;
+}
+
+.popup__button:hover {
+  opacity: 0.6;
+}
+
+.popup__close {
+  width: 40px;
+  height: 40px;
+  top: -40px;
+  right: -40px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.popup__close:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 320px) {
+  .popup__container {
+    width: 282px;
+    height: 322px;
+  }
+}
