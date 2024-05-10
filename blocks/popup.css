@@ -10,6 +10,7 @@
 
 .popup__open {
   display: flex;
+  align-items: center;
 }
 
 .popup__container {
@@ -89,6 +90,15 @@
   opacity: 0.6;
 }
 
+.popup__content-image {
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 433px;
+  max-height: 540px;
+}
+
 .popup__image {
   width: 433px;
   height: 540px;
@@ -103,7 +113,7 @@
   text-align: left;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .popup__container {
     width: 282px;
     height: 322px;

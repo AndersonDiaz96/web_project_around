@@ -63,6 +63,20 @@ function cardGenerator(name, link) {
     card.remove();
   });
 
+  cardImage.addEventListener("click", function () {
+    console.log(link, name);
+    popupImage.classList.add("popup__open");
+    const imgPop = document.querySelector(".popup__image");
+    const imgTitle = document.querySelector(".popup__image-title");
+    const imgClose = document.querySelector("#closeimage");
+    imgClose.addEventListener("click", function () {
+      popupImage.classList.remove("popup__open");
+    });
+
+    imgPop.src = link;
+    imgTitle.textContent = name;
+  });
+
   cardImage.src = link;
   cardImage.alt = name;
   cardTitle.textContent = name;
@@ -112,8 +126,3 @@ formCreateBtn.addEventListener("click", function (evt) {
   cardArea.prepend(cardToAdd);
   popupCard.classList.remove("popup__open");
 });
-
-/*function cardClone(subtitle, linkImg) {
-  const imgPop = document.querySelector(".popup__image");
-  const imgTitle = document.querySelector(".popup__image-title");
-  imgPop.src =*/

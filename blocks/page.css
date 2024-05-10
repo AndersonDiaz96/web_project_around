@@ -14,3 +14,14 @@
     margin: 0 auto;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .page {
+    width: 425px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+}
