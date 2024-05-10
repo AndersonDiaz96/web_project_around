@@ -39,14 +39,11 @@
             <img src="./images/Add_Button.svg" alt="add button" />
           </div>
         </section>
-        <section class="elements">
+        <section class="elements"></section>
+        <template class="elements__template">
           <div class="elements__card">
             <div class="elements__container">
-              <img
-                src="./images/kirill-pershin-1088404-unsplash.jpg"
-                alt="Image Valle de Yosemite"
-                class="elements__image"
-              />
+              <img src="" alt="" class="elements__image" />
 
               <img
                 src="./images/Trash.svg"
@@ -55,7 +52,7 @@
               />
             </div>
             <div class="elements__rectangle">
-              <p class="elements__title">Valle de Yosemite</p>
+              <p class="elements__title"></p>
               <img
                 src="./images/Group.svg"
                 alt="button heart"
@@ -63,122 +60,7 @@
               />
             </div>
           </div>
-          <div class="elements__card">
-            <div class="elements__container">
-              <img
-                src="./images/kirill-pershin-1404681-unsplash.jpg"
-                alt="Image Lago Louise"
-                class="elements__image"
-              />
-
-              <img
-                src="./images/Trash.svg"
-                alt="button Trash"
-                class="elements__trash"
-              />
-            </div>
-            <div class="elements__rectangle">
-              <p class="elements__title">Lago Louise</p>
-              <img
-                src="./images/Group.svg"
-                alt="button heart"
-                class="elements__heart"
-              />
-            </div>
-          </div>
-          <div class="elements__card">
-            <div class="elements__container">
-              <img
-                src="./images/kirill-pershin-1556355-unsplash.jpg"
-                alt="Image Montañas Calvas"
-                class="elements__image"
-              />
-
-              <img
-                src="./images/Trash.svg"
-                alt="button Trash"
-                class="elements__trash"
-              />
-            </div>
-            <div class="elements__rectangle">
-              <p class="elements__title">Montañas Calvas</p>
-              <img
-                src="./images/Group.svg"
-                alt="button heart"
-                class="elements__heart"
-              />
-            </div>
-          </div>
-          <div class="elements__card">
-            <div class="elements__container">
-              <img
-                src="./images/imagen_fondo_4.jpeg"
-                alt="Image Latemar"
-                class="elements__image"
-              />
-
-              <img
-                src="./images/Trash.svg"
-                alt="button Trash"
-                class="elements__trash"
-              />
-            </div>
-            <div class="elements__rectangle">
-              <p class="elements__title">Latemar</p>
-              <img
-                src="./images/Group.svg"
-                alt="button heart"
-                class="elements__heart"
-              />
-            </div>
-          </div>
-          <div class="elements__card">
-            <div class="elements__container">
-              <img
-                src="./images/imagen_fondo_5.jpeg"
-                alt="Image Vanois National..."
-                class="elements__image"
-              />
-
-              <img
-                src="./images/Trash.svg"
-                alt="button Trash"
-                class="elements__trash"
-              />
-            </div>
-            <div class="elements__rectangle">
-              <p class="elements__title">Vanois National...</p>
-              <img
-                src="./images/Group.svg"
-                alt="button heart"
-                class="elements__heart"
-              />
-            </div>
-          </div>
-          <div class="elements__card">
-            <div class="elements__container">
-              <img
-                src="./images/imagen_fondo_6.jpeg"
-                alt="Image Lago di Braies"
-                class="elements__image"
-              />
-
-              <img
-                src="./images/Trash.svg"
-                alt="button Trash"
-                class="elements__trash"
-              />
-            </div>
-            <div class="elements__rectangle">
-              <p class="elements__title">Lago di Braies</p>
-              <img
-                src="./images/Group.svg"
-                alt="button heart"
-                class="elements__heart"
-              />
-            </div>
-          </div>
-        </section>
+        </template>
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2024 Anderson Diaz</p>
@@ -213,6 +95,51 @@
           />
           <button class="popup__button">Crear</button>
         </form>
+      </div>
+      <div class="popup" id="popupaddimage">
+        <form class="popup__container" id="cardsave" novalidate>
+          <img
+            src="./images/Close_Icon.svg"
+            alt="close icon"
+            class="popup__close"
+            id="closecard"
+          />
+          <h2 class="popup__title">Nuevo lugar</h2>
+          <input
+            type="text"
+            name="title"
+            class="popup__imput"
+            minlength="1"
+            maxlength="15"
+            placeholder="Titulo"
+            id="input-title"
+            required
+          />
+
+          <input
+            type="url"
+            name="url"
+            class="popup__imput"
+            minlength="4"
+            placeholder="Enlace a la imagen (URL)"
+            id="input-image"
+            required
+          />
+          <button class="popup__button" id="formCreateBtn">Crear</button>
+        </form>
+      </div>
+      <div class="popup" id="popupimageopen">
+        <div class="popup__overlay"></div>
+        <div class="popup__content-image">
+          <img
+            src="./images/Close_Icon.svg"
+            alt="close icon"
+            class="popup__close"
+            id="closeimage"
+          />
+          <img class="popup__image" />
+          <h2 class="popup__image-title"></h2>
+        </div>
       </div>
     </div>
     <script src="./scripts/index.js"></script>

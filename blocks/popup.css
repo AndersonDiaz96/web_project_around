@@ -89,9 +89,33 @@
   opacity: 0.6;
 }
 
+.popup__image {
+  width: 433px;
+  height: 540px;
+  top: 195px;
+}
+
+.popup__image-title {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: left;
+}
+
 @media screen and (max-width: 320px) {
   .popup__container {
     width: 282px;
     height: 322px;
+  }
+
+  .popup__image {
+    width: 282px;
+    height: 322px;
+  }
+
+  .popup__image-title {
+    margin-top: 10px;
+    margin-right: 60px;
   }
 }
