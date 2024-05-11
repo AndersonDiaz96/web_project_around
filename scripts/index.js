@@ -2,10 +2,10 @@ const popupProfile = document.querySelector("#popupaddprofile");
 const popupCard = document.querySelector("#popupaddimage");
 const popupImage = document.querySelector("#popupimageopen");
 const profileButton = document.querySelector(".profile__edit-button");
-const OpenCardBtn = document.querySelector(".profile__add-button");
+const openCardBtn = document.querySelector(".profile__add-button");
 const popupClose = document.querySelector(".popup__close");
-const CloseCard = document.querySelector("#closecard");
-const CloseImg = document.querySelector(".closeimage");
+const closeCard = document.querySelector("#closecard");
+const closeImg = document.querySelector(".closeimage");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 const inputName = document.querySelector("#input-name");
@@ -47,7 +47,7 @@ const initialCards = [
   },
 ];
 
-function cardGenerator(name, link) {
+function generatorCard(name, link) {
   const card = template
     .cloneNode(true)
     .content.querySelector(".elements__card");
@@ -74,6 +74,7 @@ function cardGenerator(name, link) {
     });
 
     imgPop.src = link;
+    imgPop.alt = name;
     imgTitle.textContent = name;
   });
 
@@ -87,7 +88,7 @@ function cardGenerator(name, link) {
 }
 
 initialCards.forEach(function (element) {
-  const newCard = cardGenerator(element.name, element.link);
+  const newCard = generatorCard(element.name, element.link);
   cardArea.append(newCard);
 });
 
@@ -110,11 +111,11 @@ formButton.addEventListener("click", function (evt) {
   HandleCloseProfile();
 });
 
-OpenCardBtn.addEventListener("click", function () {
+openCardBtn.addEventListener("click", function () {
   popupCard.classList.add("popup__open");
 });
 
-CloseCard.addEventListener("click", function () {
+closeCard.addEventListener("click", function () {
   popupCard.classList.remove("popup__open");
 });
 
@@ -122,7 +123,7 @@ formCreateBtn.addEventListener("click", function (evt) {
   evt.preventDefault();
   const titleNewCard = inputTitle.value;
   const imageNewCard = inputImage.value;
-  const cardToAdd = cardGenerator(titleNewCard, imageNewCard);
+  const cardToAdd = generatorCard(titleNewCard, imageNewCard);
   cardArea.prepend(cardToAdd);
   popupCard.classList.remove("popup__open");
 });
