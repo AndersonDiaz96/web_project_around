@@ -127,3 +127,28 @@ formCreateBtn.addEventListener("click", function (evt) {
   cardArea.prepend(cardToAdd);
   popupCard.classList.remove("popup__open");
 });
+
+const ClosePopupEsc = document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    popupImage.classList.remove("popup__open");
+    popupCard.classList.remove("popup__open");
+    popupProfile.classList.remove("popup__open");
+  }
+});
+
+const ClosePopupImage = document.addEventListener("click", function (evt) {
+  if (evt.target === popupImage) {
+    popupImage.classList.remove("popup__open");
+  }
+});
+
+const ClosePopupCard = document.addEventListener("click", function (evt) {
+  if (evt.target === popupCard) {
+    popupCard.classList.remove("popup__open");
+  }
+});
+const ClosePopupProfile = document.addEventListener("click", function (evt) {
+  if (evt.target === popupProfile) {
+    popupProfile.classList.remove("popup__open");
+  }
+});
