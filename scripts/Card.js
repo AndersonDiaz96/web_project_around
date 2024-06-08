@@ -1,5 +1,4 @@
-import { template } from "./utils";
-
+//import { template } from "./utils";
 export class Card {
   constructor(name, link) {
     this._name = name;
@@ -16,10 +15,16 @@ export class Card {
     this._cardTitle = this._card.querySelector(".elements__title");
     this._btnDelete = this._card.querySelector(".elements__trash");
     this._btnLike = this._card.querySelector(".elements__heart");
+
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+    this._cardTitle.textContent = this._name;
   }
 
   generatorCard() {
+    this.getTemplate();
     this.setProperties();
+    this.handleEvents();
     return this._card;
   }
 
@@ -27,15 +32,21 @@ export class Card {
     this._btnLike.classList.toggle("elements__heart-active");
   }
 
-  handleDislike() {
-    this._btnLike.classList.remove("elements__heart-active");
-  }
-
   handleDelete() {
     this._card.remove();
   }
-}
 
-/*initialCards.forEach((element) => {
-  const initialCard = new Card(element.name, element.link);
-});*/
+  handleEvents() {
+    this._btnLike.addEventListener("click", () => {
+      this.handlelike();
+    });
+
+    this._btnDelete.addEventListener("click", () => {
+      this.handleDelete();
+    });
+
+    this._cardImage.addEventListener("click", () => {
+      openImagePopup(this._link, this._name);
+    });
+  }
+}

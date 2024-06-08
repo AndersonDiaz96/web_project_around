@@ -19,6 +19,8 @@ export const formCard = document.querySelector(".cardsave");
 export const inputImage = document.querySelector("#input-image");
 export const inputTitle = document.querySelector("#input-title");
 export const elementImage = document.querySelector(".elements__image");
+export const profileForm = document.querySelector("#profilesave");
+export const profileForm2 = document.querySelector("#cardsave");
 
 export const initialCards = [
   {
