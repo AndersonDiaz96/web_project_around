@@ -28,7 +28,7 @@ import {
 
 import FormValidator from "./FormValidator.js";
 
-function openImagePopup(link, name) {
+export function openImagePopup(link, name) {
   const imgPop = popupImage.querySelector(".popup__image");
   const imgTitle = popupImage.querySelector(".popup__image-title");
   imgPop.src = link;
