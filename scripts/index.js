@@ -1,4 +1,4 @@
-import { Card } from "./Card";
+import { Card } from "./Card.js";
 import {
   initialCards,
   popupProfile,
@@ -24,9 +24,9 @@ import {
   elementImage,
   profileForm,
   profileForm2,
-} from "./utils";
+} from "./utils.js";
 
-import FormValidator from "./FormValidator";
+import FormValidator from "./FormValidator.js";
 
 function openImagePopup(link, name) {
   const imgPop = popupImage.querySelector(".popup__image");

@@ -1,4 +1,4 @@
-//import { template } from "./utils";
+import { template } from "./utils.js";
 export class Card {
   constructor(name, link) {
     this._name = name;
