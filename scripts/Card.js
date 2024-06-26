@@ -6,6 +6,7 @@ export class Card {
     this._name = name;
     this._link = link;
     this._card = this.getTemplate();
+    //this._handleClick = handleClick;
   }
 
   getTemplate() {

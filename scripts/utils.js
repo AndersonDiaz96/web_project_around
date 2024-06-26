@@ -1,4 +1,4 @@
-export const popupProfile = document.querySelector("#popupaddprofile");
+//export const popupProfile = document.querySelector("#popupaddprofile");
 export const popupCard = document.querySelector("#popupaddimage");
 export const popupImage = document.querySelector("#popupimageopen");
 export const profileButton = document.querySelector(".profile__edit-button");

@@ -2,11 +2,11 @@ export default class FormValidator {
   constructor(settings, formElement) {
     this._formElement = formElement;
     this._settings = settings;
-    console.log("constructor");
+    //console.log("constructor");
   }
 
   showInputError(errorMessage, inputElement) {
-    console.log("showInputError");
+    // console.log("showInputError");
     this._errorElement = this._formElement.querySelector(
       `.${inputElement.id}-error`
     );
@@ -15,7 +15,7 @@ export default class FormValidator {
   }
 
   hideInputError(inputElement) {
-    console.log("hideInputError");
+    // console.log("hideInputError");
     this._errorElement = this._formElement.querySelector(
       `.${inputElement.id}-error`
     );
@@ -24,7 +24,7 @@ export default class FormValidator {
   }
 
   checkInputValidity(inputElement) {
-    console.log("checkInputValidity");
+    // console.log("checkInputValidity");
     if (!inputElement.validity.valid) {
       this.showInputError(inputElement.validationMessage, inputElement);
     } else {
@@ -33,14 +33,14 @@ export default class FormValidator {
   }
 
   hasInvalidInput(_inputList) {
-    console.log("hasInvalidInput");
+    // console.log("hasInvalidInput");
     return _inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
 
   toggleButtonState(_inputList, _buttonElement) {
-    console.log("toggleButtonState");
+    //console.log("toggleButtonState");
     if (this.hasInvalidInput(_inputList)) {
       _buttonElement.classList.add(this._settings.inactiveButtonClass);
     } else {
@@ -49,7 +49,7 @@ export default class FormValidator {
   }
 
   setEventListeners() {
-    console.log("this.formElement", this._formElement);
+    //console.log("this.formElement", this._formElement);
 
     let _inputList = Array.from(
       this._formElement.querySelectorAll(this._settings.inputSelector)
@@ -58,7 +58,7 @@ export default class FormValidator {
     let _buttonElement = this._formElement.querySelector(
       this._settings.submitButtonSelector
     );
-    console.log("_buttonElement", _buttonElement);
+    //console.log("_buttonElement", _buttonElement);
 
     this.toggleButtonState(_inputList, _buttonElement);
 
@@ -72,6 +72,6 @@ export default class FormValidator {
 
   enableValidation = () => {
     this.setEventListeners();
-    console.log("enableValidation");
+    // console.log("enableValidation");
   };
 }
