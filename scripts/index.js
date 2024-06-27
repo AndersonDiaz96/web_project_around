@@ -31,14 +31,22 @@ import UserInfo from "./UserInfo.js";
 import Section from "./Section.js";
 import PopupWithImage from "./PopupWithImage.js";
 
-const testCard = new Card({
-  //name: ".elements__image",
-  //link: ".elements__image",
+//INTENTO NUMERO 1
+/*const testCard = new Card({
+  name: ".elements__image",
+  link: ".elements__image",
 });
 
 const popupWithImage = new PopupWithImage("#popupimageopen", (popup) => {
   testCard.handleEvents(popup.link, popup.name);
-});
+});*/
+
+//INTENTO 2
+
+/*const testCard = new Card("click", (item) => {
+  const popupWithImage = new PopupWithImage();
+  popupWithImage.open(item.name, item.link);
+});*/
 
 const section = new Section(
   {
