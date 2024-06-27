@@ -28,22 +28,42 @@ import {
 import FormValidator from "./FormValidator.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
+import Section from "./Section.js";
+import PopupWithImage from "./PopupWithImage.js";
 
-const userInfo = new UserInfo({
-  nameSelector: profileName,
-  jobSelector: profileJob,
+const testCard = new Card({
+  //name: ".elements__image",
+  //link: ".elements__image",
 });
 
-/*function setUserInfo() {
-  const { name, job } = userInfo.getUserInfo();
-  nameInput.value = name;
-  aboutInput.value = job;
-}*/
+const popupWithImage = new PopupWithImage("#popupimageopen", (popup) => {
+  testCard.handleEvents(popup.link, popup.name);
+});
+
+const section = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item.name, item.link);
+      const cardElement = card.generatorCard();
+      section.addItem(cardElement);
+    },
+  },
+  cardArea
+);
+console.log(section);
+section.renderer();
+
+const userInfo = new UserInfo({
+  name: ".profile__name",
+  about: ".profile__job",
+});
+
+console.log(userInfo);
 
 const popupProfile = new PopupWithForm("#popupaddprofile", (inputs) => {
   console.log("modificamos perfil");
-  profileName.textContent = inputs.name;
-  profileJob.textContent = inputs.job;
+  userInfo.setUserInfo(inputs.name, inputs.aboutMe);
 });
 
 const popupProfileCard = new PopupWithForm("#popupaddimage", (inputs) => {
@@ -70,11 +90,11 @@ function closeImagePopup() {
 const imgClose = document.querySelector("#closeimage");
 imgClose.addEventListener("click", closeImagePopup);
 
-initialCards.forEach((element) => {
+/*initialCards.forEach((element) => {
   const initialCard = new Card(element.name, element.link);
   const newCard = initialCard.generatorCard();
   cardArea.append(newCard);
-});
+});*/
 
 /*formCreateBtn.addEventListener("click", (evt) => {
   evt.preventDefault();
@@ -89,8 +109,9 @@ initialCards.forEach((element) => {
 function handleOpenProfile(evt) {
   console.log("test popup", popupProfile);
   popupProfile.open();
-  inputName.value = profileName.textContent;
-  inputJob.value = profileJob.textContent;
+  const info = userInfo.getUserInfo();
+  inputName.value = info.name;
+  inputJob.value = info.about;
 }
 
 function handleCloseProfile(evt) {
@@ -101,10 +122,10 @@ function handleCloseProfile(evt) {
 profileButton.addEventListener("click", handleOpenProfile);
 popupClose.addEventListener("click", handleCloseProfile);
 
-formButton.addEventListener("click", function (evt) {
+/*formButton.addEventListener("click", function (evt) {
   evt.preventDefault();
   popupProfile.close();
-});
+});*/
 
 openCardBtn.addEventListener("click", function () {
   popupProfileCard.open();

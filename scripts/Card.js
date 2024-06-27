@@ -6,7 +6,7 @@ export class Card {
     this._name = name;
     this._link = link;
     this._card = this.getTemplate();
-    //this._handleClick = handleClick;
+    this._handleClick = handleClick;
   }
 
   getTemplate() {
@@ -28,6 +28,7 @@ export class Card {
     this.getTemplate();
     this.setProperties();
     this.handleEvents();
+    //this._handleClick(this._cardImage());
     return this._card;
   }
 
