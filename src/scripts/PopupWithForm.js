@@ -25,7 +25,8 @@ export default class PopupWithForm extends Popup {
   }
 
   close() {
+    console.log(this._inputList);
     super.close();
-    //this.inputList.reset();
+    this._formElement.reset();
   }
 }

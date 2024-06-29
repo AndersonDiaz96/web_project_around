@@ -10,13 +10,12 @@
     <meta name="author" content="Anderson Diaz" />
     <meta name="keywords" content="TripleTen, Java Script, Bootcamp" />
     <title>Around The U.S.</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body>
     <div class="page">
       <header class="header">
         <img
-          src="./images/logo.svg"
+          src="<%=require('./images/logo.svg')%>"
           alt="logo de Around The U.S."
           class="header__logo"
         />
@@ -24,7 +23,7 @@
       <main class="main">
         <section class="profile">
           <img
-            src="./images/Avatar.svg"
+            src="<%=require('./images/Avatar.svg')%>"
             alt="profile Avatar"
             class="profile__avatar"
           />
@@ -33,10 +32,16 @@
             <h2 class="profile__job">Explorador</h2>
           </div>
           <div class="profile__edit-button">
-            <img src="./images/Edit_Button.svg" alt="edit button" />
+            <img
+              src="<%=require('./images/Edit_Button.svg')%>"
+              alt="edit button"
+            />
           </div>
           <div class="profile__add-button">
-            <img src="./images/Add_Button.svg" alt="add button" />
+            <img
+              src="<%=require('./images/Add_Button.svg')%>"
+              alt="add button"
+            />
           </div>
         </section>
         <section class="elements"></section>
@@ -46,7 +51,7 @@
               <img src="." alt="" class="elements__image" />
 
               <img
-                src="./images/Trash.svg"
+                src="<%=require('./images/Trash.svg')%>"
                 alt="button Trash"
                 class="elements__trash"
               />
@@ -54,7 +59,7 @@
             <div class="elements__rectangle">
               <p class="elements__title"></p>
               <img
-                src="./images/Group.svg"
+                src="<%=require('./images/Group.svg')%>"
                 alt="button heart"
                 class="elements__heart"
               />
@@ -69,7 +74,7 @@
       <div class="popup" id="popupaddprofile">
         <form class="popup__container" id="profilesave" novalidate>
           <img
-            src="./images/Close_Icon.svg"
+            src="<%=require('./images/Close_Icon.svg')%>"
             alt="close icon"
             class="popup__close"
           />
@@ -103,7 +108,7 @@
       <div class="popup" id="popupaddimage">
         <form class="popup__container" id="cardsave" novalidate>
           <img
-            src="./images/Close_Icon.svg"
+            src="<%=require('./images/Close_Icon.svg')%>"
             alt="close icon"
             class="popup__close"
             id="closecard"
@@ -138,7 +143,7 @@
         <div class="popup__overlay"></div>
         <div class="popup__content-image">
           <img
-            src="./images/Close_Icon.svg"
+            src="<%=require('./images/Close_Icon.svg')%>"
             alt="close icon"
             class="popup__close"
             id="closeimage"
@@ -148,6 +153,5 @@
         </div>
       </div>
     </div>
-    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>
