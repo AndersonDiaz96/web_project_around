@@ -1,7 +1,6 @@
 import "./pages/index.css";
 import { Card } from "./scripts/Card.js";
 import {
-  initialCards,
   profileButton,
   openCardBtn,
   popupClose,
@@ -29,44 +28,32 @@ import PopupWithForm from "./scripts/PopupWithForm.js";
 import UserInfo from "./scripts/UserInfo.js";
 import Section from "./scripts/Section.js";
 import PopupWithImage from "./scripts/PopupWithImage.js";
+import Api from "./scripts/Api.js";
 
 const popupWithImage = new PopupWithImage("#popupimageopen");
 
-const section = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const card = new Card(item.name, item.link, (link, name) => {
-        popupWithImage.open(link, name);
-      });
-      const cardElement = card.generatorCard();
-      section.addItem(cardElement);
-    },
-  },
-  cardArea
-);
-console.log(section);
-section.renderer();
-
 const userInfo = new UserInfo({
-  name: ".profile__name",
-  about: ".profile__job",
+  name: "",
+  about: "",
+  userId: "",
 });
 
-console.log(userInfo);
-
 const popupProfile = new PopupWithForm("#popupaddprofile", (inputs) => {
-  console.log("modificamos perfil");
+  api.editProfile(inputs).then((result) => {
+    userInfo.setUserInfo(result);
+    popupProfile.close();
+  });
+  /*console.log("modificamos perfil");
   userInfo.setUserInfo(inputs.name, inputs.aboutMe);
-  popupProfile.close();
+  popupProfile.close();*/
 });
 
 const popupProfileCard = new PopupWithForm("#popupaddimage", (inputs) => {
-  console.log("creamos carta");
-  console.log(inputs.title, inputs.url);
-  const newCard = new Card(inputs.title, inputs.url).generatorCard();
-  cardArea.prepend(newCard);
-  popupProfileCard.close();
+  api.addCard(inputs).then((result) => {
+    const newCard = new Card(result, () => {}).generatorCard();
+    cardArea.prepend(newCard);
+    popupProfileCard.close();
+  });
 });
 
 popupProfile.setEventListeners();
@@ -99,3 +86,40 @@ validateFormProfile.enableValidation();
 
 const validateFormCard = new FormValidator(settings, profileForm2);
 validateFormCard.enableValidation();
+
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/web_es_11",
+  headers: {
+    authorization: "07e61eb5-a89f-450f-ab80-7e49415999f8",
+    "Content-Type": "application/json",
+  },
+});
+
+api.getInitialCards().then((result) => {
+  const section = new Section(
+    {
+      items: result,
+      renderer: (item) => {
+        const card = new Card(
+          item,
+          () => {},
+          userInfo._userId,
+          () => {
+            api.addLike(card._id);
+          },
+          () => {
+            api.removeLike(card._id);
+          }
+        );
+        const cardElement = card.generatorCard();
+        section.addItem(cardElement);
+      },
+    },
+    cardArea
+  );
+  section.renderer();
+});
+
+api.getUserInfo().then((result) => {
+  userInfo.setUserInfo(result);
+});

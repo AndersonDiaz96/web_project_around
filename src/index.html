@@ -22,11 +22,14 @@
       </header>
       <main class="main">
         <section class="profile">
-          <img
-            src="<%=require('./images/Avatar.svg')%>"
-            alt="profile Avatar"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-container">
+            <img
+              src="<%=require('./images/Avatar.svg')%>"
+              alt="profile Avatar"
+              class="profile__avatar"
+            />
+            <button class="profile__edit-icon"></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__name">Jacques Cousteau</h1>
             <h2 class="profile__job">Explorador</h2>
@@ -63,6 +66,7 @@
                 alt="button heart"
                 class="elements__heart"
               />
+              <span class="elements__likes"></span>
             </div>
           </div>
         </template>
@@ -151,6 +155,31 @@
           <img class="popup__image" src="." alt="" />
           <h2 class="popup__image-title"></h2>
         </div>
+      </div>
+      <div class="popup" id="popup-avatar">
+        <form class="popup__container" id="popup-avatar__form" novalidate>
+          <img
+            src="<%=require('./images/Close_Icon.svg')%>"
+            alt="close icon"
+            class="popup__close"
+            id="closecard"
+            required
+          />
+          <h2 class="popup__title" id="popup-avatar__title">
+            Cambiar foto de perfil
+          </h2>
+          <input
+            type="text"
+            name="Avatar"
+            class="popup__imput"
+            placeholder="https://somewebsite.com/someimage.jpg"
+            id="input-avatar"
+            minlength="2"
+            required
+          />
+          <span class="popup__error-visible input-avatar-error"></span>
+          <button class="popup__button">Guarda</button>
+        </form>
       </div>
     </div>
   </body>

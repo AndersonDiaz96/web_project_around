@@ -1,11 +1,17 @@
 import { template } from "./utils.js";
 
 export class Card {
-  constructor(name, link, handleClick) {
-    this._name = name;
-    this._link = link;
+  constructor(cardData, handleClick, userId, handleAddLike, handleRemoveLike) {
+    this._name = cardData.name;
+    this._link = cardData.link;
     this._card = this.getTemplate();
     this._handleClick = handleClick;
+    this._likes = cardData.likes;
+    this.userId = userId;
+    this.owner = cardData.owner;
+    this.handleAddLike = handleAddLike;
+    this.handleRemoveLike = handleRemoveLike;
+    this._id = cardData._id;
   }
 
   getTemplate() {
@@ -16,11 +22,17 @@ export class Card {
     this._cardImage = this._card.querySelector(".elements__image");
     this._cardTitle = this._card.querySelector(".elements__title");
     this._btnDelete = this._card.querySelector(".elements__trash");
+
+    if (this.owner._id !== this.userId) {
+      this._btnDelete.remove();
+    }
     this._btnLike = this._card.querySelector(".elements__heart");
+    this.likesCounter = this._card.querySelector(".elements__likes");
 
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
+    this.likesCounter.textContent = this._likes.length;
   }
 
   generatorCard() {
@@ -50,5 +62,13 @@ export class Card {
     this._cardImage.addEventListener("click", () => {
       this._handleClick(this._link, this._name);
     });
+    console.log("que es esto?", hasUserLiked);
+    const hasUserLiked = this._likes.some((like) => like._id !== this.userId);
+    if (hasUserLiked) {
+      this.handleRemoveLike(this._id);
+      this.handlelike();
+    } else {
+      this.handleAddLike(this._id);
+    }
   }
 }

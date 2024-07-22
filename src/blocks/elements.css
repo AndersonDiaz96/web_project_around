@@ -72,6 +72,11 @@
   opacity: 0.6;
 }
 
+.elements__likes {
+  font-size: 13px;
+  color: #000;
+}
+
 @media screen and (max-width: 425px) {
   .elements {
     row-gap: 20px;
