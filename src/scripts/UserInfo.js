@@ -8,14 +8,14 @@ export default class UserInfo {
     this.avatar = document.querySelector(".profile__avatar");
   }
   getUserInfo() {
-    /*this._name = this.profileName;
-    this._job = this.profileJob;*/
     return {
       name: this.profileName.textContent,
       about: this.profileJob.textContent,
     };
   }
   setUserInfo(data) {
+    console.log("que es avatar?", this.avatar);
+    console.log("trae a avatar data?", data);
     this._name = data.name;
     this._about = data.about;
     this._userId = data._id;

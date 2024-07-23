@@ -1,18 +1,18 @@
 import Popup from "./Popup.js";
 
-export default class PopupWithForm extends Popup {
-  constructor(popupSelector, handleFormSubmit) {
+export default class PopupWithAvatar extends Popup {
+  constructor(popupSelector, handleFormAvatar) {
     super(popupSelector);
-    this._handleFormSubmit = handleFormSubmit;
-    this._formElement = this._popupElement.querySelector(".popup__container");
-    this._inputList = this._formElement.querySelectorAll(".popup__imput");
+    this._handleFormAvatar = handleFormAvatar;
+    this._formAvatar = this._popupElement.querySelector("#popup-avatar__form");
+    this._inputList = this._formAvatar.querySelectorAll("#input-avatar");
   }
 
   setEventListeners() {
     super.setEventListeners();
-    this._formElement.addEventListener("submit", (evt) => {
+    this._formAvatar.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._handleFormSubmit(this.getInputValues());
+      this._handleFormAvatar(this.getInputValues());
     });
   }
 
@@ -28,6 +28,6 @@ export default class PopupWithForm extends Popup {
   close() {
     console.log(this._inputList);
     super.close();
-    this._formElement.reset();
+    this._formAvatar.reset();
   }
 }

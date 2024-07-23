@@ -21,6 +21,7 @@ import {
   elementImage,
   profileForm,
   profileForm2,
+  avatarButton,
 } from "./scripts/utils.js";
 
 import FormValidator from "./scripts/FormValidator.js";
@@ -29,6 +30,8 @@ import UserInfo from "./scripts/UserInfo.js";
 import Section from "./scripts/Section.js";
 import PopupWithImage from "./scripts/PopupWithImage.js";
 import Api from "./scripts/Api.js";
+import PopupWithAvatar from "./scripts/PopupWithAvatar.js";
+import PopupWithConfirmation from "./scripts/PopupWithConfirmation.js";
 
 const popupWithImage = new PopupWithImage("#popupimageopen");
 
@@ -38,14 +41,20 @@ const userInfo = new UserInfo({
   userId: "",
 });
 
+const popupDeleteCard = new PopupWithConfirmation();
+
+const popupAvatar = new PopupWithAvatar("#popupaddavatar", (input) => {
+  api.editAvatar(input).then((result) => {
+    userInfo.setUserInfo(result);
+    popupAvatar.close();
+  });
+});
+
 const popupProfile = new PopupWithForm("#popupaddprofile", (inputs) => {
   api.editProfile(inputs).then((result) => {
     userInfo.setUserInfo(result);
     popupProfile.close();
   });
-  /*console.log("modificamos perfil");
-  userInfo.setUserInfo(inputs.name, inputs.aboutMe);
-  popupProfile.close();*/
 });
 
 const popupProfileCard = new PopupWithForm("#popupaddimage", (inputs) => {
@@ -59,6 +68,7 @@ const popupProfileCard = new PopupWithForm("#popupaddimage", (inputs) => {
 popupProfile.setEventListeners();
 popupProfileCard.setEventListeners();
 popupWithImage.setEventListeners();
+popupAvatar.setEventListeners();
 
 function handleOpenProfile(evt) {
   popupProfile.open();
@@ -67,6 +77,16 @@ function handleOpenProfile(evt) {
   inputJob.value = info.about;
 }
 
+function handleOpenAvatar(evt) {
+  popupAvatar.open();
+}
+
+function handleOpenConfirmation(evt) {
+  popupDeleteCard.open();
+}
+
+trashButton.addEventListener("click", handleOpenConfirmation);
+avatarButton.addEventListener("click", handleOpenAvatar);
 profileButton.addEventListener("click", handleOpenProfile);
 
 openCardBtn.addEventListener("click", function () {
@@ -105,10 +125,10 @@ api.getInitialCards().then((result) => {
           () => {},
           userInfo._userId,
           () => {
-            api.addLike(card._id);
+            return api.addLike(card._id);
           },
           () => {
-            api.removeLike(card._id);
+            return api.removeLike(card._id);
           }
         );
         const cardElement = card.generatorCard();
