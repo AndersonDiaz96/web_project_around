@@ -6,6 +6,8 @@ export default class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
     this._formElement = this._popupElement.querySelector(".popup__container");
     this._inputList = this._formElement.querySelectorAll(".popup__imput");
+    this.buttonProfile = document.querySelector("#popup__button-profile");
+    this.formCreateBtn = document.querySelector("#formCreateBtn");
   }
 
   setEventListeners() {
@@ -29,5 +31,7 @@ export default class PopupWithForm extends Popup {
     console.log(this._inputList);
     super.close();
     this._formElement.reset();
+    this.buttonProfile.textContent = "Crear";
+    this.formCreateBtn.textContent = "Crear";
   }
 }

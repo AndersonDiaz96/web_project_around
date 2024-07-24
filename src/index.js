@@ -21,7 +21,11 @@ import {
   elementImage,
   profileForm,
   profileForm2,
+  profileForm3,
   avatarButton,
+  buttonProfile,
+  buttonAvatar,
+  buttonDelete,
 } from "./scripts/utils.js";
 
 import FormValidator from "./scripts/FormValidator.js";
@@ -41,17 +45,29 @@ const userInfo = new UserInfo({
   userId: "",
 });
 
-const popupDeleteCard = new PopupWithConfirmation();
+const popupWithConfirmation = new PopupWithConfirmation(
+  "#popupconfirmation",
+  (cardId) => {
+    api.deleteCard(cardId).then((result) => {
+      buttonDelete.textContent = "Guardando...";
+      popupWithConfirmation.close();
+      const card = document.querySelector(`#id_${cardId}`);
+      card.remove();
+    });
+  }
+);
 
 const popupAvatar = new PopupWithAvatar("#popupaddavatar", (input) => {
   api.editAvatar(input).then((result) => {
+    buttonProfile.textContent = "Guardando...";
     userInfo.setUserInfo(result);
-    popupAvatar.close();
+    buttonAvatar.close();
   });
 });
 
 const popupProfile = new PopupWithForm("#popupaddprofile", (inputs) => {
   api.editProfile(inputs).then((result) => {
+    buttonProfile.textContent = "Guardando...";
     userInfo.setUserInfo(result);
     popupProfile.close();
   });
@@ -59,7 +75,12 @@ const popupProfile = new PopupWithForm("#popupaddprofile", (inputs) => {
 
 const popupProfileCard = new PopupWithForm("#popupaddimage", (inputs) => {
   api.addCard(inputs).then((result) => {
-    const newCard = new Card(result, () => {}).generatorCard();
+    formCreateBtn.textContent = "Guardando...";
+    const newCard = new Card(
+      result,
+      popupWithImage.open,
+      popupWithConfirmation.open
+    ).generatorCard();
     cardArea.prepend(newCard);
     popupProfileCard.close();
   });
@@ -69,6 +90,7 @@ popupProfile.setEventListeners();
 popupProfileCard.setEventListeners();
 popupWithImage.setEventListeners();
 popupAvatar.setEventListeners();
+popupWithConfirmation.setEventListeners();
 
 function handleOpenProfile(evt) {
   popupProfile.open();
@@ -81,11 +103,7 @@ function handleOpenAvatar(evt) {
   popupAvatar.open();
 }
 
-function handleOpenConfirmation(evt) {
-  popupDeleteCard.open();
-}
-
-trashButton.addEventListener("click", handleOpenConfirmation);
+//trashButton.addEventListener("click", handleOpenConfirmation);
 avatarButton.addEventListener("click", handleOpenAvatar);
 profileButton.addEventListener("click", handleOpenProfile);
 
@@ -107,6 +125,9 @@ validateFormProfile.enableValidation();
 const validateFormCard = new FormValidator(settings, profileForm2);
 validateFormCard.enableValidation();
 
+const validateFormConfirmation = new FormValidator(settings, profileForm3);
+validateFormConfirmation.enableValidation();
+
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web_es_11",
   headers: {
@@ -122,13 +143,16 @@ api.getInitialCards().then((result) => {
       renderer: (item) => {
         const card = new Card(
           item,
-          () => {},
+          popupWithImage.open,
           userInfo._userId,
           () => {
             return api.addLike(card._id);
           },
           () => {
             return api.removeLike(card._id);
+          },
+          () => {
+            popupWithConfirmation.open(card._id);
           }
         );
         const cardElement = card.generatorCard();

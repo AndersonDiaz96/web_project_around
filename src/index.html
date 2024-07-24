@@ -61,12 +61,14 @@
             </div>
             <div class="elements__rectangle">
               <p class="elements__title"></p>
-              <img
-                src="<%=require('./images/Group.svg')%>"
-                alt="button heart"
-                class="elements__heart"
-              />
-              <span class="elements__likes"></span>
+              <div class="elements__container-like">
+                <img
+                  src="<%=require('./images/Group.svg')%>"
+                  alt="button heart"
+                  class="elements__heart"
+                />
+                <span class="elements__likes"></span>
+              </div>
             </div>
           </div>
         </template>
@@ -106,7 +108,9 @@
             required
           />
           <span class="popup__error-visible input-about-error"></span>
-          <button class="popup__button">Crear</button>
+          <button class="popup__button" id="popup__button-profile">
+            Crear
+          </button>
         </form>
       </div>
       <div class="popup" id="popupaddimage">
@@ -178,11 +182,13 @@
             required
           />
           <span class="popup__error-visible input-avatar-error"></span>
-          <button class="popup__button">Guardar</button>
+          <button class="popup__button" id="popup__avatar-charge">
+            Guardar
+          </button>
         </form>
       </div>
-      <div class="popup" id="popup-confirmation">
-        <form class="popup__container" id="form-confirmation" novalidate>
+      <div class="popup" id="popupconfirmation">
+        <form class="popup__container" id="popup-confirmation__form" novalidate>
           <img
             src="<%=require('./images/Close_Icon.svg')%>"
             alt="close icon"
@@ -193,7 +199,11 @@
           <h2 class="popup__title" id="popup__title-confirmation">
             ¿Estás seguro?
           </h2>
-          <button class="popup__save-button" id="popup__confirm-button">
+          <button
+            type="submit"
+            class="popup__button"
+            id="popup__confirm-button"
+          >
             Sí
           </button>
         </form>

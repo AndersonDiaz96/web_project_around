@@ -14,8 +14,6 @@ export default class UserInfo {
     };
   }
   setUserInfo(data) {
-    console.log("que es avatar?", this.avatar);
-    console.log("trae a avatar data?", data);
     this._name = data.name;
     this._about = data.about;
     this._userId = data._id;

@@ -1,7 +1,14 @@
 import { template } from "./utils.js";
 
 export class Card {
-  constructor(cardData, handleClick, userId, handleAddLike, handleRemoveLike) {
+  constructor(
+    cardData,
+    handleClick,
+    userId,
+    handleAddLike,
+    handleRemoveLike,
+    handleCardDelete
+  ) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._card = this.getTemplate();
@@ -12,6 +19,7 @@ export class Card {
     this.handleAddLike = handleAddLike;
     this.handleRemoveLike = handleRemoveLike;
     this._id = cardData._id;
+    this.handleCardDelete = handleCardDelete;
   }
 
   getTemplate() {
@@ -22,6 +30,7 @@ export class Card {
     this._cardImage = this._card.querySelector(".elements__image");
     this._cardTitle = this._card.querySelector(".elements__title");
     this._btnDelete = this._card.querySelector(".elements__trash");
+    this._card.id = `id_${this._id}`;
 
     if (this.owner._id !== this.userId) {
       this._btnDelete.remove();
@@ -74,9 +83,9 @@ export class Card {
       this.handlelike();
     });
 
-    /*this._btnDelete.addEventListener("click", () => {
-      this.handleDelete();
-    });*/
+    this._btnDelete.addEventListener("click", () => {
+      this.handleCardDelete(this._id);
+    });
 
     this._cardImage.addEventListener("click", () => {
       this._handleClick(this._link, this._name);

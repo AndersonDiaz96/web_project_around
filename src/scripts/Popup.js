@@ -8,7 +8,6 @@ export default class Popup {
   }
 
   close() {
-    console.log(this.close);
     this._popupElement.classList.remove("popup__open");
   }
 

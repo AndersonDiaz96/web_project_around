@@ -58,8 +58,18 @@
   overflow: hidden;
 }
 
-.elements__heart {
+.elements__container-like {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  width: 21px;
+  height: 35px;
   margin-right: 18px;
+}
+
+.elements__heart {
   cursor: pointer;
   transition: opacity 0.3s ease;
 }

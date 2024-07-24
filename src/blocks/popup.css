@@ -26,6 +26,14 @@
   height: 330px;
 }
 
+#popup-avatar__form {
+  height: 272px;
+}
+
+#popup-confirmation__form {
+  height: 181px;
+}
+
 .popup__title {
   width: 330px;
   height: 23px;
@@ -37,6 +45,10 @@
   margin-left: 36px;
   margin-top: 34px;
   margin-bottom: 54px;
+}
+
+#popup__title-confirmation {
+  margin-bottom: 38px;
 }
 
 .popup__imput {
@@ -71,6 +83,10 @@
   cursor: pointer;
   margin: 18.26px 36px 35.51px;
   padding: 0;
+}
+
+#popup__confirm-button {
+  margin: 0px 36px 35.51px;
 }
 
 .popup__button_disabled {

@@ -6,6 +6,7 @@ export default class PopupWithAvatar extends Popup {
     this._handleFormAvatar = handleFormAvatar;
     this._formAvatar = this._popupElement.querySelector("#popup-avatar__form");
     this._inputList = this._formAvatar.querySelectorAll("#input-avatar");
+    this.buttonAvatar = document.querySelector("#popup__avatar-charge");
   }
 
   setEventListeners() {
@@ -29,5 +30,6 @@ export default class PopupWithAvatar extends Popup {
     console.log(this._inputList);
     super.close();
     this._formAvatar.reset();
+    this.buttonAvatar.textContent = "Guardar";
   }
 }
