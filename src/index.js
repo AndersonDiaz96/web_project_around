@@ -79,6 +79,13 @@ const popupProfileCard = new PopupWithForm("#popupaddimage", (inputs) => {
     const newCard = new Card(
       result,
       popupWithImage.open,
+      userInfo._userId,
+      () => {
+        return api.addLike(result._id);
+      },
+      () => {
+        return api.removeLike(result._id);
+      },
       popupWithConfirmation.open
     ).generatorCard();
     cardArea.prepend(newCard);

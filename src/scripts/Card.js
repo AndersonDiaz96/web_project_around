@@ -56,7 +56,6 @@ export class Card {
 
   handlelike() {
     const hasUserLiked = this._likes.some((like) => like._id === this.userId);
-    console.log("que es esto?", hasUserLiked);
     if (hasUserLiked) {
       this.handleRemoveLike(this._id).then((response) => {
         this._likes = response.likes;
